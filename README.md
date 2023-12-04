@@ -48,6 +48,6 @@ Migrate database
 Run project
 
 ```bash
-  php artisan migrate
+  php artisan serve
 ```
 
