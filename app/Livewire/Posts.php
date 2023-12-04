@@ -3,17 +3,21 @@
 namespace App\Livewire;
 
 use Livewire\Component;
+use Livewire\WithPagination;
 use App\Models\Post;
 
 class Posts extends Component
 {
-    public $posts, $title, $description, $post_id;
+    use WithPagination;
+
+    public  $title, $description, $post_id;
     public $updateMode = false;
 
     public function render()
     {
-        $this->posts = Post::latest()->get();
-        return view('livewire.posts');
+        return view('livewire.posts', [
+            'posts' => Post::paginate(2),
+        ]);
     }
     private function resetInputFields(){
         $this->title = '';
